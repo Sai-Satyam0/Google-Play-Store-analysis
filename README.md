@@ -8,6 +8,10 @@ A Python-based project for exploring, analyzing, and visualizing Google Play Sto
 
 This repository currently contains an incomplete version of the project. It will be updated, improved, and expanded in the future.
 
+## Project Type
+
+Classroom / Academic Project
+
 ## Planned Updates
 
 * Improve data preprocessing and analysis
