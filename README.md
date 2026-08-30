@@ -2,25 +2,10 @@
 
 A Python-based project for exploring, analyzing, and visualizing Google Play Store data using data analysis and visualization techniques.
 
-## Project Status
-
-**Work in Progress**
-
-This repository currently contains an incomplete version of the project. It will be updated, improved, and expanded in the future.
-
 ## Project Type
 
-Classroom / Academic Project
+Team Porject
 
-## Planned Updates
-
-* Improve data preprocessing and analysis
-* Add more meaningful visualizations
-* Improve the Streamlit interface
-* Refactor and organize the code
-* Add additional analysis features
-* Improve documentation
-* Make the project easier to run and reproduce
 
 ## Technologies
 
