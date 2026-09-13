@@ -300,11 +300,11 @@ The project also contains the Python code used to perform the preprocessing, ana
 
 ### Visualization
 
-![Coding part3](images/Coding part3.png)
+![Coding part3](images/Codingpart3.png)
 
 ### Chart Generation
 
-![Coding part 4](images/Coding part 4.png)
+![Coding part 4](images/Codingpart 4.png)
 
 ## What This Project Covers
 
