@@ -1,38 +1,29 @@
-# Google Play Store Analysis
+# Google Play Store Data Analysis
 
-A data analysis project based on Google Play Store application data and user reviews. The project covers data cleaning, preprocessing, exploratory data analysis, comparative analysis, and sentiment analysis, with the results presented through an interactive Streamlit dashboard.
+This project is an analysis of Google Play Store applications and user reviews. I built it to explore how different applications perform on the Play Store and to understand what the data can tell us about ratings, reviews, installs, pricing, categories, and user sentiment.
 
-## Overview
+The project started with cleaning and understanding the raw datasets and was then developed into an interactive Streamlit dashboard where the analysis can be explored visually.
 
-The Google Play Store dataset contains information about applications such as ratings, reviews, installs, categories, pricing, size, and update information. Alongside it, the user reviews dataset provides review text and sentiment information.
+## About the Project
 
-The objective of this project is to transform the raw datasets into meaningful information through a complete data analysis workflow.
+The Google Play Store dataset contains information about thousands of applications, but the raw data is not immediately ready for analysis. It contains missing values, duplicate records, inconsistent formats, and columns that need to be converted before they can be used properly.
 
-```text
-Raw Data
-   |
-   v
-Data Cleaning
-   |
-   v
-Data Preprocessing
-   |
-   v
-Exploratory Data Analysis
-   |
-   v
-Comparative Analysis
-   |
-   v
-Sentiment Analysis
-   |
-   v
-Interactive Dashboard
-```
+I first worked on cleaning and preparing the data and then used it to investigate questions such as:
+
+* Which categories contain the most applications?
+* How are ratings distributed?
+* Is there a relationship between reviews and installs?
+* How do free and paid applications compare?
+* Which categories and genres have higher install numbers?
+* How does application revenue vary between categories?
+* What are users saying about the applications they use?
+* How does sentiment differ between application categories?
+
+The final analysis is presented through a Streamlit dashboard.
 
 ## Dashboard
 
-The analysis is presented through a Streamlit dashboard that brings the datasets, preprocessing steps, descriptive analysis, visualizations, and sentiment analysis together in one application.
+The dashboard brings the different parts of the project together, from the original datasets and preprocessing to the final visualizations and sentiment analysis.
 
 ### Home
 
@@ -46,61 +37,70 @@ The project uses two datasets.
 
 The main dataset contains information about applications available on the Google Play Store.
 
-Important columns include:
+Some of the main columns are:
 
-* `App`
-* `Category`
-* `Rating`
-* `Reviews`
-* `Size`
-* `Installs`
-* `Type`
-* `Price`
-* `Content Rating`
-* `Genres`
-* `Last Updated`
-* `Current Ver`
-* `Android Ver`
+```text
+App
+Category
+Rating
+Reviews
+Size
+Installs
+Type
+Price
+Content Rating
+Genres
+Last Updated
+Current Ver
+Android Ver
+```
 
-![Dataset 1](images/Dataset1.png)
+The original dataset contains 10,841 application records.
 
-![Dataset 2](images/Dataset2.png)
+![Dataset1](images/Dataset1.png)
+
+![Dataset2](images/Dataset2.png)
 
 ### User Reviews Dataset
 
-The user reviews dataset contains reviews and sentiment information associated with applications.
+The second dataset contains reviews written by users along with sentiment information.
 
-Important columns include:
+The main columns are:
 
-* `App`
-* `Translated_Review`
-* `Sentiment`
-* `Sentiment_Polarity`
-* `Sentiment_Subjectivity`
+```text
+App
+Translated_Review
+Sentiment
+Sentiment_Polarity
+Sentiment_Subjectivity
+```
 
-![Dataset 6](images/Dataset6.png)
+![Dataset6](images/Dataset6.png)
 
 ## Data Cleaning and Preprocessing
 
-The raw Play Store data contains missing values, duplicate records, inconsistent formats, and values that need to be transformed before analysis.
+A significant part of the project was preparing the raw Play Store dataset for analysis.
 
-The preprocessing process includes:
+The following steps were performed:
 
-* removing invalid values from the `Reviews` column
-* converting review counts to numeric values
-* cleaning the `Installs` column
-* converting installs to numeric values
-* cleaning the `Price` column
-* converting prices to numeric values
-* converting application sizes into MB
-* converting `Last Updated` into datetime format
-* removing duplicate records
-* handling missing numerical values
-* handling missing categorical values
-* identifying and removing extreme values
-* creating additional variables required for analysis
+* checked the structure and data types of the dataset
+* identified missing values
+* removed invalid values from the `Reviews` column
+* converted review counts into numeric values
+* cleaned the `Installs` column
+* converted install values into numeric format
+* removed currency symbols from `Price`
+* converted prices into numeric values
+* converted application sizes into MB
+* converted `Last Updated` into a datetime format
+* removed duplicate records
+* handled missing numerical values
+* handled missing categorical values
+* identified extreme values
+* removed outliers using percentile-based filtering
+* created additional columns needed for the analysis
 
-Additional variables are created for analytical purposes, including:
+Some derived variables were created to make the analysis easier, including:
 
 * Update Year
 * Installs Category
@@ -108,11 +108,11 @@ Additional variables are created for analytical purposes, including:
 
 ### Missing Values
 
-![Dataset 3](images/Dataset3.png)
+![Dataset3](images/Dataset3.png)
 
 ### Data Types
 
-![Dataset 4](images/Dataset4.png)
+![Dataset4](images/Dataset4.png)
 
 ### Preprocessed Dataset
 
@@ -120,69 +120,71 @@ Additional variables are created for analytical purposes, including:
 
 ## Descriptive Analysis
 
-The descriptive analysis provides an overview of the dataset before moving into comparisons and more detailed analysis.
+Before comparing applications, I looked at the basic characteristics of the cleaned dataset.
 
-The analysis examines:
+This part of the analysis covers:
 
-* app ratings
-* number of reviews
-* number of installs
+* ratings
+* reviews
+* installs
 * application categories
 * application types
-* application prices
+* prices
 * application sizes
+* numerical distributions
+
+![Description1](images/Description1.png)
+
+![Description2](images/Description2.png)
+
+## Exploratory Analysis
+
+The exploratory analysis focuses on understanding the overall structure of applications on the Play Store.
+
+The visualizations cover things such as:
+
+* application rating distribution
 * numerical feature distributions
+* number of applications in each category
+* reviews compared with installs
+* free and paid applications
+* installs by application type
+* genres with the highest installs
+* rating trends over time
 
-![Description 1](images/Description1.png)
+### Visualization Dashboard
 
-![Description 2](images/Description2.png)
+![VIzualitaion\_main](images/VIzualitaion_main.png)
 
-## Exploratory Data Analysis
+### Exploratory Visualizations
 
-The exploratory analysis focuses on understanding the structure of the Play Store ecosystem and identifying patterns within individual variables.
+![Visulaization1-1](images/Visulaization1-1.png)
+
+## Comparative Analysis
+
+After looking at individual variables, I compared different groups of applications to see how their performance differs.
 
 The analysis includes:
 
-* distribution of application ratings
-* distribution of numerical variables
-* application count by category
-* reviews versus installs
-* free versus paid applications
+* free applications vs paid applications
+* highest-rated free applications
+* highest-rated paid applications
+* most-reviewed free applications
+* average revenue by category
+* revenue vs installs
 * installs by application type
 * top genres by installs
 * rating trends by update year
 
-### Visualization Dashboard
+![Visulaizationn1-2](images/Visulaizationn1-2.png)
 
-![Visualization Main](images/VIzualitaion_main.png)
-
-### Exploratory Analysis
-
-![Visualization 1](images/Visulaization1-1.png)
-
-## Comparative Analysis
-
-The project also compares different groups of applications to understand differences in performance.
-
-The comparative analysis includes:
-
-* free applications versus paid applications
-* highest-rated paid applications
-* highest-rated free applications
-* most-reviewed free applications
-* average revenue by category
-* revenue versus installs
-* installs by application type
-* top genres based on installs
-* rating trends across update years
-
-![Visualization 2](images/Visulaizationn1-2.png)
-
-![Visualization 3](images/VIsulizationn1-3.png)
+![VIsulizationn1-3](images/VIsulizationn1-3.png)
 
 ## Sentiment Analysis
 
-The user reviews dataset makes it possible to analyze the opinions expressed by users rather than relying only on numerical application metrics.
+The user reviews dataset adds another side to the analysis.
+
+Ratings and installs show how an application performs numerically, but reviews give some idea of how users actually feel about it.
 
 The sentiment analysis uses:
 
@@ -190,37 +192,37 @@ The sentiment analysis uses:
 * `Sentiment_Polarity`
 * `Sentiment_Subjectivity`
 
-The analysis explores:
+The analysis looks at:
 
 * positive, neutral, and negative reviews
 * sentiment polarity
-* sentiment by application category
+* sentiment across application categories
 * polarity and subjectivity
 * relationships between sentiment and application characteristics
 
 ### Sentiment Polarity
 
-![Sentiment Analysis 1](images/VIsulaization2-1.png)
+![VIsulaization2-1](images/VIsulaization2-1.png)
 
 ### Sentiment by Category
 
-![Sentiment Analysis 2](images/Visualization2-2.png)
+![Visualization2-2](images/Visualization2-2.png)
 
 ### Sentiment Subjectivity
 
-![Sentiment Analysis 3](images/Visulaizationn2-3.png)
+![Visulaizationn2-3](images/Visulaizationn2-3.png)
 
-## Technology Stack
+## Technology Used
 
-| Technology            | Purpose                        |
+| Technology            | Used For                       |
 | --------------------- | ------------------------------ |
 | Python                | Data processing and analysis   |
 | Pandas                | Data cleaning and manipulation |
-| Matplotlib            | Data visualization             |
+| Matplotlib            | Visualization                  |
 | Seaborn               | Statistical visualization      |
-| Plotly                | Interactive visualizations     |
-| Streamlit             | Interactive dashboard          |
-| Streamlit Option Menu | Dashboard navigation           |
+| Plotly                | Interactive charts             |
+| Streamlit             | Dashboard                      |
+| Streamlit Option Menu | Navigation                     |
 | Streamlit Lottie      | Dashboard interface            |
 | Jupyter Notebook      | Exploratory analysis           |
 
@@ -270,73 +272,72 @@ git clone <repository-url>
 cd "Play store project"
 ```
 
-### Install dependencies
+### Install the required libraries
 
 ```bash
 pip install pandas matplotlib seaborn plotly streamlit streamlit-option-menu streamlit-lottie statsmodels
 ```
 
-### Run the Streamlit application
+### Run the dashboard
 
 ```bash
 streamlit run prac.py
 ```
 
-The application will open at the local Streamlit address provided in the terminal.
+Once Streamlit starts, open the local address shown in the terminal.
 
-## Implementation
+## Code
 
-The project contains the Python code used for preprocessing, analysis, and visualization in addition to the Streamlit dashboard.
+The project also contains the Python code used to perform the preprocessing, analysis, and visualization.
 
-### Data Preprocessing Code
+### Data Preprocessing
 
-![Preprocessing Code](images/Codingpart1.png)
+![Codingpart1](images/Codingpart1.png)
 
-### Analysis Code
+### Analysis
 
-![Analysis Code](images/Coding  part 2.png)
+![Coding  part 2](images/Coding  part 2.png)
 
-### Visualization Code
+### Visualization
 
-![Visualization Code](images/Coding part3.png)
+![Coding part3](images/Coding part3.png)
 
 ### Chart Generation
 
-![Chart Generation](images/Coding part 4.png)
+![Coding part 4](images/Coding part 4.png)
 
-## Analysis Areas
+## What This Project Covers
 
-The project focuses on:
+This project brings together several parts of data analysis:
 
-* application ratings
-* application popularity
-* reviews
-* installs
-* application categories
-* application genres
-* free and paid applications
-* application pricing
-* estimated revenue
-* user sentiment
-* sentiment polarity
-* sentiment subjectivity
-* relationships between application metrics
+* data cleaning
+* missing-value handling
+* duplicate removal
+* outlier handling
+* data transformation
+* feature creation
+* exploratory data analysis
+* comparative analysis
+* statistical relationships
+* data visualization
+* sentiment analysis
+* interactive dashboard development
 
 ## Future Improvements
 
-Possible improvements for the project include:
+There are several directions in which the project could be extended:
 
-* adding more interactive filters
-* adding KPI cards for important metrics
-* improving the dashboard interface
-* adding more detailed revenue analysis
-* applying more advanced NLP techniques to user reviews
-* developing an application recommendation system
-* deploying the dashboard publicly
-* adding automated dataset updates
+* add more interactive filters to the dashboard
+* add KPI cards for important application metrics
+* improve the dashboard layout
+* perform more advanced NLP on user reviews
+* build an application recommendation system
+* add deeper revenue analysis
+* deploy the dashboard online
+* allow the dataset to be updated automatically
 
 ## Author
 
 **Sai Satyam Biswal**
 
-Data Analytics | Python | Streamlit | Data Visualization
+Data Analytics | Python | Data Visualization | Streamlit
