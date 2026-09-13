@@ -268,7 +268,7 @@ Play store project/
 ### Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone <https://github.com/Sai-Satyam0/Google-Play-Store-analysis>
 cd "Play store project"
 ```
 
